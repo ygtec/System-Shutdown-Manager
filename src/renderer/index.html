@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Shutdown Manager</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="i18n.js"></script>
+</head>
+<body>
+  <div class="titlebar">
+    <div class="title">System Shutdown Manager</div>
+    <div class="window-controls">
+      <button id="langBtn" class="lang-btn" aria-label="切换语言">🌐</button>
+      <button id="minBtn" aria-label="最小化">–</button>
+      <button id="closeBtn" aria-label="隐藏到托盘">×</button>
+    </div>
+  </div>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img src="logo.svg" class="brand-logo" alt="System Shutdown Manager logo" />
+        <div class="brand-text">
+          <h1>System Shutdown Manager</h1>
+          <p class="subtitle">简洁美观的定时定点关机工具（Windows / macOS）</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="field">
+        <label for="datetime">⏰ 选择关机时间</label>
+        <input type="datetime-local" id="datetime" />
+      </div>
+
+      <div class="actions">
+        <button id="scheduleBtn" class="primary">设置计划</button>
+        <button id="cancelBtn" class="secondary" disabled>取消计划</button>
+      </div>
+
+      <div id="status" class="status">📌 尚未设置计划</div>
+    </section>
+
+    <section class="panel">
+      <div class="actions">
+        <button id="shutdownNowBtn" class="danger">⚡ 立即关机</button>
+      </div>
+      <p class="hint">🔔 提示：请确保应用在计划时间前保持运行</p>
+      <p id="platformInfo" class="platform"></p>
+    </section>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

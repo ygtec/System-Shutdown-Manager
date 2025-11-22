@@ -1,0 +1,70 @@
+{
+  "name": "system-shutdown-manager",
+  "version": "1.0.0",
+  "description": "跨平台定时定点关机工具（Windows/macOS），简洁美观的界面，支持安装包打包",
+  "main": "src/main.js",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron .",
+    "build": "electron-builder",
+    "assets:win": "node scripts/gen-win-icon.js",
+    "build:win": "npm run assets:win && electron-builder --win nsis",
+    "build:mac": "electron-builder --mac dmg"
+  },
+  "build": {
+    "appId": "com.example.system-shutdown-manager",
+    "productName": "System Shutdown Manager",
+    "files": [
+      "src/**/*",
+      "package.json",
+      "build/icons/**/*"
+    ],
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "System-Shutdown-Manager-${version}.exe",
+      "icon": "build/icons/win/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "build/icons/win/icon.ico",
+      "uninstallerIcon": "build/icons/win/icon.ico",
+      "installerHeaderIcon": "build/icons/win/icon.ico",
+      "language": "2052",
+      "multiLanguageInstaller": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "System Shutdown Manager",
+      "deleteAppDataOnUninstall": false,
+      "include": "build/installer.nsh"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.6.0",
+    "sharp": "^0.33.3",
+    "to-ico": "^1.1.0"
+  },
+  "dependencies": {}
+}

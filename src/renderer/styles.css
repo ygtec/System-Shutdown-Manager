@@ -1,0 +1,223 @@
+/* 简洁美观的暗色主题 */
+:root {
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --secondary: #64748b;
+  --secondary-hover: #475569;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --border: #334155;
+  --shadow: 0 4px 20px rgba(0,0,0,0.5);
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+}
+
+.container {
+  max-width: 420px;
+  margin: 48px auto 8px;
+  padding: 0 16px;
+  overflow: hidden;
+}
+
+header {
+  margin-bottom: 20px;
+}
+header h1 {
+  margin: 0 0 2px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.brand { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px;
+}
+.brand-logo { 
+  width: 28px; 
+  height: 28px;
+  filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
+}
+.brand-text { 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+}
+
+.panel:hover {
+  border-color: var(--primary);
+  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.15);
+}
+
+.field { margin-bottom: 12px; }
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+}
+.field input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  background: var(--bg);
+  color: var(--text);
+  transition: all 0.2s ease;
+}
+.field input[type="datetime-local"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.actions { display: flex; gap: 8px; }
+button {
+  border: none;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+button.primary { 
+  background: var(--primary); 
+  color: white;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+button.primary:hover { 
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+button.secondary { 
+  background: var(--secondary); 
+  color: white;
+}
+button.secondary:hover { 
+  background: var(--secondary-hover);
+}
+button.danger { 
+  background: var(--danger); 
+  color: white;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+button.danger:hover { 
+  background: var(--danger-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+button:disabled { 
+  opacity: 0.5; 
+  cursor: not-allowed;
+  transform: none !important;
+}
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.status { 
+  margin-top: 12px; 
+  padding: 8px 12px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 8px;
+  color: var(--text); 
+  font-size: 13px;
+  line-height: 1.5;
+}
+.hint { 
+  margin-top: 8px; 
+  color: var(--muted); 
+  font-size: 12px;
+  line-height: 1.5;
+}
+.platform { 
+  margin-top: 6px; 
+  color: var(--muted); 
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* 自定义标题栏（仅最小化与关闭） */
+.titlebar {
+  -webkit-app-region: drag;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+  border-radius: 12px 12px 0 0;
+  box-shadow: var(--shadow);
+  max-width: 420px;
+  margin: 8px auto 0;
+}
+.titlebar .title {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 13px;
+  letter-spacing: -0.01em;
+}
+.titlebar .window-controls {
+  -webkit-app-region: no-drag;
+  display: flex;
+  gap: 6px;
+}
+.titlebar .window-controls button {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  line-height: 1;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+.titlebar .window-controls button.lang-btn {
+  font-size: 14px;
+}
+.titlebar .window-controls button:hover {
+  background: var(--border);
+  color: var(--text);
+  border-color: var(--primary);
+}
